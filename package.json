@@ -16,6 +16,7 @@
     "style-loader": "^3.3.3",
     "ts-loader": "^9.5.0",
     "typescript": "^5.2.2",
+    "@types/react": "^18.2.37",
     "webpack": "^5.89.0",
     "webpack-cli": "^5.1.4"
   },
@@ -25,8 +26,5 @@
   },
   "files": [
     "dist"
-  ],
-  "dependencies": {
-    "@types/react": "^18.2.37"
-  }
+  ]
 }
