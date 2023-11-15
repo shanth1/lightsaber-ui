@@ -1,4 +1,4 @@
-import { IDesignConfig } from '../types/config';
+import { IDesignConfig } from 'provider/types/config';
 
 export const defaultConfig: IDesignConfig = {
   themes: {
