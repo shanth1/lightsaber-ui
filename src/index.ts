@@ -1,4 +1,4 @@
-import Button from './components/Button/Button';
-import DesignProvider from './components/providers/DesignProvider';
+import Button from './components/common/Button';
+import DesignProvider from './components/provider';
 
 export { DesignProvider, Button };

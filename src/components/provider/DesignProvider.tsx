@@ -1,14 +1,14 @@
 import React, { FC, ReactNode } from 'react';
-import { DesignContext } from './model/context';
+import { DesignContext } from './context';
 import { IDesignConfig } from './types/config';
-import { defaultConfig } from './model/defaultConfig';
+import { defaultConfig } from './data/defaultConfig';
 
 interface IDesignProvider {
   children: ReactNode | string;
   config?: IDesignConfig;
 }
 
-const DesignProvider: FC<IDesignProvider> = ({
+export const DesignProvider: FC<IDesignProvider> = ({
   children,
   config = defaultConfig,
 }) => {
@@ -16,5 +16,3 @@ const DesignProvider: FC<IDesignProvider> = ({
     <DesignContext.Provider value={config}>{children}</DesignContext.Provider>
   );
 };
-
-export default DesignProvider;

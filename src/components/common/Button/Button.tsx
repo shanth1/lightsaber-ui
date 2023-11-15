@@ -1,13 +1,12 @@
-import React, { FC, ReactNode, useContext, useState } from 'react';
+import React, { FC, ReactNode, useContext } from 'react';
 import './Button.css';
-import { IDesignConfig } from '../providers/types/config';
-import { DesignContext } from '../providers/model/context';
+import { DesignContext, IDesignConfig } from '../../provider';
 
 interface IButton {
   children: ReactNode | string;
 }
 
-const Button: FC<IButton> = ({ children, ...props }) => {
+export const Button: FC<IButton> = ({ children, ...props }) => {
   const config: IDesignConfig = useContext(DesignContext);
 
   return (
@@ -22,5 +21,3 @@ const Button: FC<IButton> = ({ children, ...props }) => {
     </button>
   );
 };
-
-export default Button;
