@@ -1,16 +1,25 @@
-import React, { FC, ReactNode } from 'react';
+import React, { FC, ReactNode, useContext, useState } from 'react';
 import './Button.css';
+import { IDesignConfig } from '../providers/types/config';
+import { DesignContext } from '../providers/model/context';
 
 interface IButton {
   children: ReactNode | string;
-  color?: string;
 }
 
-const Button: FC<IButton> = ({ children, color, ...props }) => {
+const Button: FC<IButton> = ({ children, ...props }) => {
+  const config: IDesignConfig = useContext(DesignContext);
+
   return (
-    <div {...props} style={{ color }}>
+    <button
+      {...props}
+      style={{
+        backgroundColor: config.themes.light.primary,
+        color: config.themes.dark.primary,
+      }}
+    >
       {children}
-    </div>
+    </button>
   );
 };
 
