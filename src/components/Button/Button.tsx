@@ -1,6 +1,6 @@
 import React, { FC, ReactNode, useContext } from 'react';
 import './Button.css';
-import { DesignContext, IDesignConfig } from 'provider';
+import { DesignContext, IDesignConfig } from '../../provider';
 
 interface IButton {
   children: ReactNode | string;
