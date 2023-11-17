@@ -9,15 +9,5 @@ interface IButton {
 export const Button: FC<IButton> = ({ children, ...props }) => {
   const config: IDesignConfig = useContext(DesignContext);
 
-  return (
-    <button
-      {...props}
-      style={{
-        backgroundColor: config.themes.light.primary,
-        color: config.themes.dark.primary,
-      }}
-    >
-      {children}
-    </button>
-  );
+  return <button {...props}>{children}</button>;
 };
