@@ -6,6 +6,7 @@ import { defaultConfig } from './data/defaultConfig';
 interface IDesignProvider {
   children: ReactNode | string;
   config?: IDesignConfig;
+  activeTheme?: 'light' | 'dark' | string;
 }
 
 export const DesignProvider: FC<IDesignProvider> = ({
