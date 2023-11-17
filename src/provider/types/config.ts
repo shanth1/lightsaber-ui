@@ -17,18 +17,12 @@ interface IThemes {
 interface ITransition {
   duration: string;
   delay?: string;
-  timingFunction?:
-    | 'ease'
-    | 'ease-in'
-    | 'ease-out'
-    | 'ease-in-out'
-    | 'linear'
-    | 'step-start'
-    | 'step-end';
+  timingFunction?: string;
 }
 
 export interface IDesignConfig {
   themes?: IThemes;
   rounding?: 'none' | 'sm' | 'md' | 'lg' | 'full';
+  fontFamily?: Array<string>;
   transition?: ITransition;
 }
