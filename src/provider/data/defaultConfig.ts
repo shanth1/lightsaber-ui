@@ -38,6 +38,6 @@ export const defaultConfig: IDesignConfig = {
     'Segoe UI Symbol',
     'Noto Color Emoji',
   ],
-  rounding: 'none',
+  rounding: 'sm',
   transition: { duration: '0s' },
 };
