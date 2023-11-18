@@ -2,9 +2,9 @@ import React, { FC, ReactNode } from "react";
 import { DesignContext } from "./context";
 import { IDesignConfig } from "./types/config";
 import { defaultConfig } from "./data/defaultConfig";
+import { IProps } from "../types";
 
-interface IDesignProvider {
-    children: ReactNode | string;
+interface IDesignProvider extends IProps {
     config?: IDesignConfig;
     activeTheme?: "light" | "dark" | string;
 }

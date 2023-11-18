@@ -1,8 +1,8 @@
 import React, { CSSProperties, FC, ReactNode } from "react";
 import { getStyleObjFromCss } from "../../utils/cssToObj";
+import { IProps } from "../../types";
 
-interface IBox {
-    children: ReactNode | string;
+interface IBox extends IProps {
     color?: string;
     p?: number;
     px?: number;
