@@ -10,7 +10,6 @@ interface IColors {
 }
 
 interface IThemes {
-  light: IColors;
   [key: string]: IColors;
 }
 
