@@ -1,16 +1,10 @@
 import React, { CSSProperties, FC, ReactNode } from "react";
 import { getStyleObjFromCss } from "../../utils/cssToObj";
 import { IProps } from "../../types";
+import { updatePadding } from "../../styles/padding";
 
 interface IBox extends IProps {
     borderRadius?: number;
-    color?: string;
-    p?: number;
-    px?: number;
-    py?: number;
-    className?: string;
-    style?: CSSProperties;
-    css?: string;
 }
 
 const Box: FC<IBox> = ({
@@ -29,11 +23,7 @@ const Box: FC<IBox> = ({
 
     customStyle.backgroundColor = color || customStyle.backgroundColor;
     customStyle.borderRadius = `${borderRadius}rem`;
-    customStyle.padding = `${p}rem`;
-    customStyle.paddingLeft = `${px}rem`;
-    customStyle.paddingRight = `${px}rem`;
-    customStyle.paddingTop = `${py}rem`;
-    customStyle.paddingBottom = `${py}rem`;
+    updatePadding(customStyle, p, px, py);
 
     return (
         <div className={className} style={customStyle}>
