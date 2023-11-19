@@ -21,7 +21,7 @@ interface ITransition {
 
 export interface IDesignConfig {
     themes?: IThemes;
-    rounding?: "none" | "sm" | "md" | "lg" | "full";
+    borderRadius?: "none" | "sm" | "md" | "lg" | "full";
     fontFamily?: Array<string>;
     transition?: ITransition;
 }
