@@ -1,7 +1,9 @@
-import { CSSProperties } from 'react';
+import { CSSProperties } from "react";
 
-export const getStyleObjFromCss = (cssString: string | undefined): CSSProperties => {
+export const getStyleObjFromCss = (
+    cssString: string | undefined
+): CSSProperties => {
     console.log(cssString);
-    
-    return {}
-}
+
+    return {};
+};
