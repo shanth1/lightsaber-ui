@@ -7,20 +7,36 @@ interface IBox extends IProps {
     p?: number;
     px?: number;
     py?: number;
+    className?: string;
+    style?: CSSProperties;
     css?: string;
 }
 
-const Box: FC<IBox> = ({ children, color, p, px, py, css }) => {
-    const style: CSSProperties = {};
-    style.backgroundColor = color;
-    style.padding = `${p}rem`;
-    style.paddingLeft = `${px}rem`;
-    style.paddingRight = `${px}rem`;
-    style.paddingTop = `${py}rem`;
-    style.paddingBottom = `${py}rem`;
-    getStyleObjFromCss(css);
+const Box: FC<IBox> = ({
+    children,
+    color,
+    p,
+    px,
+    py,
+    className,
+    style,
+    css
+}) => {
+    const styleFromCss = getStyleObjFromCss(css);
+    const customStyle: CSSProperties = { ...styleFromCss, ...style };
 
-    return <div style={style}>{children}</div>;
+    customStyle.backgroundColor = color;
+    customStyle.padding = `${p}rem`;
+    customStyle.paddingLeft = `${px}rem`;
+    customStyle.paddingRight = `${px}rem`;
+    customStyle.paddingTop = `${py}rem`;
+    customStyle.paddingBottom = `${py}rem`;
+
+    return (
+        <div className={className} style={customStyle}>
+            {children}
+        </div>
+    );
 };
 
 export default Box;
