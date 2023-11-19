@@ -10,9 +10,7 @@ cssString: string | undefined): CSSProperties => {
     if (!cssString) return {}
     const styleObj: CSSProperties = {};
 
-    // [["display", "block"], ["color", "#0000000"]]
-
-    cssString.replace(" ", "").split(";").forEach((parametr) => {
+    cssString.replace(/\s/g, "").split(";").forEach((parametr) => {
         const [key, value] = parametr.split(":");
         // styleObj[key] = value;
     });
