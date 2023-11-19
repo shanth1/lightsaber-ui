@@ -3,6 +3,7 @@ import { getStyleObjFromCss } from "../../utils/cssToObj";
 import { IProps } from "../../types";
 
 interface IBox extends IProps {
+    borderRadius?: number;
     color?: string;
     p?: number;
     px?: number;
@@ -15,6 +16,7 @@ interface IBox extends IProps {
 const Box: FC<IBox> = ({
     children,
     color,
+    borderRadius,
     p,
     px,
     py,
@@ -26,6 +28,7 @@ const Box: FC<IBox> = ({
     const customStyle: CSSProperties = { ...styleFromCss, ...style };
 
     customStyle.backgroundColor = color;
+    customStyle.borderRadius = `${borderRadius}rem`;
     customStyle.padding = `${p}rem`;
     customStyle.paddingLeft = `${px}rem`;
     customStyle.paddingRight = `${px}rem`;
