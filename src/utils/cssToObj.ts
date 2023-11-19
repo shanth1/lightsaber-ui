@@ -1,19 +1,25 @@
 import { CSSProperties } from "react";
 
-function doSomething(prop: keyof CSSProperties) {
+const cssToCamelCase = (cssString: string) => {
+  return cssString.replace(/-([a-z])/g, function (match, letter) {
+    return letter.toUpperCase();
+  });
 }
 
 export const getStyleObjFromCss = (
 cssString: string | undefined): CSSProperties => {
-    console.log(cssString);
     
     if (!cssString) return {}
-    const styleObj: CSSProperties = {};
+    
+    const styleObj: Record<string, any> = {};
 
     cssString.replace(/\s/g, "").split(";").forEach((parametr) => {
         const [key, value] = parametr.split(":");
-        // styleObj[key] = value;
+        const keyCheckCamelCase: string = cssToCamelCase(key);
+        styleObj[keyCheckCamelCase] = value;
     });
 
-    return styleObj;
+    const styleObjCssProperties: CSSProperties = styleObj as CSSProperties;
+
+    return styleObjCssProperties;
 };
