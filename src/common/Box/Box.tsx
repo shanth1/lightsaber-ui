@@ -27,7 +27,7 @@ const Box: FC<IBox> = ({
     const styleFromCss = getStyleObjFromCss(css);
     const customStyle: CSSProperties = { ...styleFromCss, ...style };
 
-    customStyle.backgroundColor = color;
+    customStyle.backgroundColor = color || customStyle.backgroundColor;
     customStyle.borderRadius = `${borderRadius}rem`;
     customStyle.padding = `${p}rem`;
     customStyle.paddingLeft = `${px}rem`;
