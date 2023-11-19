@@ -1,9 +1,21 @@
 import { CSSProperties } from "react";
 
-export const getStyleObjFromCss = (
-    cssString: string | undefined
-): CSSProperties => {
-    console.log(cssString);
+function doSomething(prop: keyof CSSProperties) {
+}
 
-    return {};
+export const getStyleObjFromCss = (
+cssString: string | undefined): CSSProperties => {
+    console.log(cssString);
+    
+    if (!cssString) return {}
+    const styleObj: CSSProperties = {};
+
+    // [["display", "block"], ["color", "#0000000"]]
+
+    cssString.replace(" ", "").split(";").forEach((parametr) => {
+        const [key, value] = parametr.split(":");
+        // styleObj[key] = value;
+    });
+
+    return styleObj;
 };
