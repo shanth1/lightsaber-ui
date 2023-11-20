@@ -1,3 +1,5 @@
-import Button from './components/Button/Button';
+import Button from './common/Button';
+import Box from './common/Box';
+import DesignProvider from './provider';
 
-export { Button };
+export { DesignProvider, Button, Box };
