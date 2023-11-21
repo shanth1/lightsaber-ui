@@ -15,6 +15,7 @@ import { updatePadding } from "../../styles/padding";
 
 interface IButton extends IProps {
     borderRadius?: number;
+    disabled?: boolean;
     onClick?(event?: MouseEvent): void;
 }
 
@@ -34,13 +35,17 @@ export const Button: FC<IButton> = (props) => {
     updatePadding(customStyle, props.p, props.px, props.py);
 
     return (
-        <div
-            role="button"
+        <button
+            disabled={props.disabled}
             onClick={props.onClick}
-            className={["button", customClassName].join(" ")}
+            className={[
+                "button",
+                props.disabled && "button_disabled",
+                customClassName
+            ].join(" ")}
             style={customStyle}
         >
             {props.children}
-        </div>
+        </button>
     );
 };
