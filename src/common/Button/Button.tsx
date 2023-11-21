@@ -1,4 +1,10 @@
-import React, { CSSProperties, FC, ReactNode, useContext } from "react";
+import React, {
+    CSSProperties,
+    FC,
+    MouseEvent,
+    ReactNode,
+    useContext
+} from "react";
 import "./Button.css";
 import { DesignContext, IDesignConfig } from "../../provider";
 import { defaultConfig } from "../../provider/data/defaultConfig";
@@ -9,6 +15,7 @@ import { updatePadding } from "../../styles/padding";
 
 interface IButton extends IProps {
     borderRadius?: number;
+    onClick?(event?: MouseEvent): void;
 }
 
 export const Button: FC<IButton> = (props) => {
@@ -29,6 +36,7 @@ export const Button: FC<IButton> = (props) => {
     return (
         <div
             role="button"
+            onClick={props.onClick}
             className={["button", customClassName].join(" ")}
             style={customStyle}
         >
