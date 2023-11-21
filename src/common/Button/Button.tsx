@@ -13,9 +13,13 @@ import { getCustomClassName } from "../../styles/borderRadius";
 import { getStyleObjFromCss } from "../../utils/cssToObj";
 import { updatePadding } from "../../styles/padding";
 
+type TType = "button" | "submit" | "reset";
+
 interface IButton extends IProps {
     borderRadius?: number;
     disabled?: boolean;
+    submit?: boolean;
+    reset?: boolean;
     onClick?(event?: MouseEvent): void;
 }
 
@@ -34,8 +38,13 @@ export const Button: FC<IButton> = (props) => {
     customStyle.borderRadius = `${props.borderRadius}rem`;
     updatePadding(customStyle, props.p, props.px, props.py);
 
+    let type: TType = "button";
+    if (props.reset) type = "reset";
+    if (props.submit) type = "submit";
+
     return (
         <button
+            type={type}
             disabled={props.disabled}
             onClick={props.onClick}
             className={[
