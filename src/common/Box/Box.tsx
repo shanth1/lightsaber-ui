@@ -11,31 +11,24 @@ interface IBox extends IProps {
     borderRadius?: number;
 }
 
-const Box: FC<IBox> = ({
-    children,
-    color,
-    borderRadius,
-    p,
-    px,
-    py,
-    className,
-    style,
-    css
-}) => {
+const Box: FC<IBox> = (props) => {
     const config: IDesignConfig = useContext(DesignContext) || defaultConfig;
 
-    const customClassName = getCustomClassName(config.borderRadius, className);
+    const customClassName = getCustomClassName(
+        config.borderRadius,
+        props.className
+    );
 
-    const styleFromCss = getStyleObjFromCss(css);
-    const customStyle: CSSProperties = { ...styleFromCss, ...style };
+    const styleFromCss = getStyleObjFromCss(props.css);
+    const customStyle: CSSProperties = { ...styleFromCss, ...props.style };
 
-    customStyle.backgroundColor = color || customStyle.backgroundColor;
-    customStyle.borderRadius = `${borderRadius}rem`;
-    updatePadding(customStyle, p, px, py);
+    customStyle.backgroundColor = props.color || customStyle.backgroundColor;
+    customStyle.borderRadius = `${props.borderRadius}rem`;
+    updatePadding(customStyle, props.p, props.px, props.py);
 
     return (
         <div className={customClassName} style={customStyle}>
-            {children}
+            {props.children}
         </div>
     );
 };
