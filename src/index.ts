@@ -1,5 +1,6 @@
-import Button from './common/Button';
-import Box from './common/Box';
-import DesignProvider from './provider';
+import { Typography, Text } from "./common/Typography";
+import Button from "./common/Button";
+import Box from "./common/Box";
+import DesignProvider from "./provider";
 
-export { DesignProvider, Button, Box };
+export { DesignProvider, Button, Box, Typography, Text };
