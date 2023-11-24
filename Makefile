@@ -6,5 +6,5 @@ merge-dev:
 	git checkout development
 	git pull upstream development
 
-my-merge:
-	git merge --no-ff --no-edit origin/development
+my-merge: 
+	git merge --no-ff --no-edit development
