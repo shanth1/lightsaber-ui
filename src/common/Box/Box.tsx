@@ -1,13 +1,13 @@
 import React, { CSSProperties, FC, ReactNode, useContext } from "react";
 import { getStyleObjFromCss } from "../../utils/cssToObj";
-import { IProps } from "../../types";
 import { updatePadding } from "../../styles/padding";
 import { DesignContext, IDesignConfig } from "../../provider";
 import { defaultConfig } from "../../provider/data/defaultConfig";
 import "../../styles/border.css";
 import { getCustomClassName } from "../../styles/borderRadius";
+import { IStyledPropsWithChildren } from "../../types";
 
-interface IBox extends IProps {
+interface IBox extends IStyledPropsWithChildren<ReactNode> {
     borderRadius?: number;
 }
 

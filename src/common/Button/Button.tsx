@@ -1,21 +1,15 @@
-import React, {
-    CSSProperties,
-    FC,
-    MouseEvent,
-    ReactNode,
-    useContext
-} from "react";
+import React, { CSSProperties, FC, MouseEvent, useContext } from "react";
 import "./Button.css";
 import { DesignContext, IDesignConfig } from "../../provider";
 import { defaultConfig } from "../../provider/data/defaultConfig";
-import { IProps } from "../../types";
+import { IStyledPropsWithChildren } from "../../types";
 import { getCustomClassName } from "../../styles/borderRadius";
 import { getStyleObjFromCss } from "../../utils/cssToObj";
 import { updatePadding } from "../../styles/padding";
 
 type TType = "button" | "submit" | "reset";
 
-interface IButton extends IProps {
+interface IButton extends IStyledPropsWithChildren<string> {
     borderRadius?: number;
     disabled?: boolean;
     submit?: boolean;

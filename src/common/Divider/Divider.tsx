@@ -1,9 +1,9 @@
 import React, { CSSProperties, FC, ReactNode, useContext } from "react";
 import { DesignContext, IDesignConfig } from "../../provider";
 import { defaultConfig } from "../../provider/data/defaultConfig";
-import { IProps } from "../../types";
+import { IStyledProps } from "../../types";
 
-interface IDivider extends IProps {
+interface IDivider extends IStyledProps {
     thickness?: string;
     orientation?: "vertical" | "horizontal";
 }

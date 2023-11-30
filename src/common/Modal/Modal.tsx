@@ -6,7 +6,7 @@ import { defaultConfig } from "../../provider/data/defaultConfig";
 import "../../styles/border.css";
 import { getCustomClassName } from "../../styles/borderRadius";
 import "./Modal.css";
-import { IModal } from "./IModal";
+import { IModal } from "./types";
 
 export const Modal: FC<IModal> = ({
     children,
@@ -20,7 +20,7 @@ export const Modal: FC<IModal> = ({
     css,
     isOpen,
     onClose,
-    bpColor, //? back plate color. not sure about the name yet
+    bpColor //? back plate color. not sure about the name yet
 }) => {
     const config: IDesignConfig = useContext(DesignContext) || defaultConfig;
 
@@ -33,12 +33,16 @@ export const Modal: FC<IModal> = ({
     customStyle.borderRadius = `${borderRadius}rem`;
     updatePadding(customStyle, p, px, py);
 
-    useEffect(()=>{
-      document.body.style.overflow = isOpen ? "hidden" : "visible";
-    }, [isOpen])
+    useEffect(() => {
+        document.body.style.overflow = isOpen ? "hidden" : "visible";
+    }, [isOpen]);
 
     return isOpen ? (
-        <div className="back-plate" style={bpColor ? {backgroundColor: bpColor} : {}} onClick={onClose}>
+        <div
+            className="back-plate"
+            style={bpColor ? { backgroundColor: bpColor } : {}}
+            onClick={onClose}
+        >
             <div className="modal-wrapper">
                 <div
                     className={"modal-window " + customClassName}

@@ -2,13 +2,9 @@ import React, { CSSProperties, FC, useContext } from "react";
 import { DesignContext, IDesignConfig } from "../../provider";
 import { defaultConfig } from "../../provider/data/defaultConfig";
 import { getStyleObjFromCss } from "../../utils/cssToObj";
+import { IStyledPropsWithChildren } from "../../types";
 
-interface ITypography {
-    children: string;
-    className?: string;
-    css?: string;
-    style?: CSSProperties;
-
+interface ITypography extends IStyledPropsWithChildren<string> {
     start?: boolean;
     left?: boolean;
     center?: boolean;
