@@ -1,10 +1,6 @@
-import React, { FC, ReactNode } from "react";
-import { IStyledProps } from "../../types";
+import React, { FC } from "react";
 import { getStyleFromProps } from "../../styles";
-
-interface IBoxProps extends IStyledProps {
-    children: ReactNode;
-}
+import { IBoxProps } from "./types";
 
 const Box: FC<IBoxProps> = (props) => {
     const customStyle = getStyleFromProps(props);

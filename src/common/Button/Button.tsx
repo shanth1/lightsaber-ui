@@ -1,17 +1,7 @@
-import React, { FC, MouseEvent } from "react";
-import { IStyledProps } from "../../types";
+import React, { FC, MouseEventHandler } from "react";
 import { getStyleFromProps } from "../../styles";
+import { IButtonProps, TType } from "./types";
 import "./Button.css";
-
-type TType = "button" | "submit" | "reset";
-
-interface IButtonProps extends IStyledProps {
-    children: string;
-    disabled?: boolean;
-    submit?: boolean;
-    reset?: boolean;
-    onClick?(event?: MouseEvent): void;
-}
 
 export const Button: FC<IButtonProps> = (props) => {
     const customStyle = getStyleFromProps(props);
