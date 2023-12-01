@@ -3,7 +3,6 @@ import { getStyleObjFromCss } from "../../utils/cssToObj";
 import { updatePadding } from "../../styles/padding";
 import { DesignContext, IDesignConfig } from "../../provider";
 import { defaultConfig } from "../../provider/data/defaultConfig";
-import "../../styles/border.css";
 import "./Modal.css";
 import { IModalProps } from "./types";
 

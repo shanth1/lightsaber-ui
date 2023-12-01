@@ -14,7 +14,7 @@ enum ERounded {
 
 export const updateBorderRadiusFromRounded = (
     style: CSSProperties,
-    rounded: TRounded
+    rounded?: TRounded
 ): void => {
     switch (rounded) {
         case "none":

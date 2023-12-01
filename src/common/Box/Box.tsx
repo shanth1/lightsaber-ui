@@ -1,25 +1,16 @@
-import React, { CSSProperties, FC, ReactNode, useContext } from "react";
-import { getStyleObjFromCss } from "../../utils/cssToObj";
-import { updatePadding } from "../../styles/padding";
-import { DesignContext, IDesignConfig } from "../../provider";
-import { defaultConfig } from "../../provider/data/defaultConfig";
-import "../../styles/border.css";
+import React, { FC, ReactNode } from "react";
 import { IStyledProps } from "../../types";
+import { getStyle } from "../../styles";
 
 interface IBoxProps extends IStyledProps {
     children: ReactNode;
+    test: number;
     borderRadius?: number;
 }
 
 const Box: FC<IBoxProps> = (props) => {
-    const config: IDesignConfig = useContext(DesignContext) || defaultConfig;
-
-    const styleFromCss = getStyleObjFromCss(props.css);
-    const customStyle: CSSProperties = { ...styleFromCss, ...props.style };
-
-    customStyle.backgroundColor = props.color || customStyle.backgroundColor;
-    customStyle.borderRadius = `${props.borderRadius}rem`;
-    updatePadding(customStyle, props.p, props.px, props.py);
+    // const config: IDesignConfig = useContext(DesignContext) || defaultConfig;
+    const customStyle = getStyle(props);
 
     return (
         <div className={props.className} style={customStyle}>

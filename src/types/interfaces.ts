@@ -1,4 +1,5 @@
 import { CSSProperties } from "react";
+import { TRounded } from "./types";
 
 export interface IProps {
     className?: string;
@@ -8,6 +9,7 @@ export interface IProps {
 
 export interface IStyledProps extends IProps {
     color?: string;
+    rounded?: TRounded;
     p?: number;
     px?: number;
     py?: number;
