@@ -4,7 +4,7 @@ import { getPrimaryStyles } from "../../styles";
 import "./Modal.css";
 
 export const Modal: FC<IModalProps> = (props) => {
-    const customStyle = getPrimaryStyles(props);
+    const style = getPrimaryStyles(props);
 
     useEffect(() => {
         document.body.style.overflow = props.isOpen ? "hidden" : "visible";
@@ -19,7 +19,7 @@ export const Modal: FC<IModalProps> = (props) => {
             <div className="modal-wrapper">
                 <div
                     className={"modal-window " + props.className}
-                    style={customStyle}
+                    style={style}
                 >
                     {props.children}
                 </div>

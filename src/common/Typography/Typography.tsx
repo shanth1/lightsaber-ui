@@ -4,13 +4,13 @@ import { ITypographyProps } from "./types";
 import { getSecondaryStyles } from "./styles";
 
 export const Typography: FC<ITypographyProps> = (props) => {
-    const customStyle: CSSProperties = {
+    const style: CSSProperties = {
         ...getSecondaryStyles(props),
         ...getPrimaryStyles(props)
     };
 
     return (
-        <div className={props.className} style={customStyle}>
+        <div className={props.className} style={style}>
             {props.children}
         </div>
     );

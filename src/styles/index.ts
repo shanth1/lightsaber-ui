@@ -13,23 +13,20 @@ export const getPrimaryStyles = <T extends IStyledProps>(
     props: T
 ): CSSProperties => {
     const config: IDesignConfig = useContext(DesignContext) || defaultConfig;
-    const customStyle: CSSProperties = {};
+    const style: CSSProperties = {};
 
     if (isPropsStyled<T>(props)) {
-        customStyle.backgroundColor = props.color;
-        updateBorderRadiusFromRounded(
-            customStyle,
-            props.rounded || config.rounded
-        );
-        updatePadding(customStyle, props.p, props.px, props.py);
+        style.backgroundColor = props.color;
+        updateBorderRadiusFromRounded(style, props.rounded || config.rounded);
+        updatePadding(style, props.p, props.px, props.py);
     }
 
     const styleFromCss = getStyleObjFromCss(props.css);
-    const priorityStyle: CSSProperties = {
-        ...customStyle,
+    const primaryStyles: CSSProperties = {
+        ...style,
         ...styleFromCss,
         ...props.style
     };
 
-    return priorityStyle;
+    return primaryStyles;
 };

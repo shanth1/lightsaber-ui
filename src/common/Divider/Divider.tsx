@@ -4,10 +4,10 @@ import { getPrimaryStyles } from "../../styles";
 import { IDividerProps } from "./types";
 
 export const Divider: FC<IDividerProps> = (props) => {
-    const customStyle: CSSProperties = {
+    const style: CSSProperties = {
         ...getSecondaryStyles(props),
         ...getPrimaryStyles(props)
     };
 
-    return <div style={customStyle}></div>;
+    return <div style={style}></div>;
 };

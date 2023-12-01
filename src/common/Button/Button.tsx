@@ -4,7 +4,7 @@ import { IButtonProps, TType } from "./types";
 import "./Button.css";
 
 export const Button: FC<IButtonProps> = (props) => {
-    const customStyle = getPrimaryStyles(props);
+    const style = getPrimaryStyles(props);
 
     let type: TType = "button";
     if (props.reset) type = "reset";
@@ -20,7 +20,7 @@ export const Button: FC<IButtonProps> = (props) => {
                 props.disabled && "button_disabled",
                 props.className
             ].join(" ")}
-            style={customStyle}
+            style={style}
         >
             {props.children}
         </button>

@@ -3,10 +3,10 @@ import { getPrimaryStyles } from "../../styles";
 import { IBoxProps } from "./types";
 
 const Box: FC<IBoxProps> = (props) => {
-    const customStyle = getPrimaryStyles(props);
+    const style = getPrimaryStyles(props);
 
     return (
-        <div className={props.className} style={customStyle}>
+        <div className={props.className} style={style}>
             {props.children}
         </div>
     );
