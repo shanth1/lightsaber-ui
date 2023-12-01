@@ -1,14 +1,4 @@
-import { CSSProperties } from "react";
+import { TRounded } from "./types";
+import { IProps, IStyledProps } from "./interfaces";
 
-export interface IProps {
-    className?: string;
-    style?: CSSProperties;
-    css?: string;
-}
-
-export interface IStyledProps extends IProps {
-    color?: string;
-    p?: number;
-    px?: number;
-    py?: number;
-}
+export { TRounded, IProps, IStyledProps };
