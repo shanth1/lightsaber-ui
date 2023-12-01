@@ -9,7 +9,7 @@ import { defaultConfig } from "../provider/data/defaultConfig";
 const isPropsStyled = <T>(props: T): boolean =>
     Object.prototype.hasOwnProperty.call(props, "p") && true;
 
-export const getStyleFromProps = <T extends IStyledProps>(
+export const getPrimaryStyles = <T extends IStyledProps>(
     props: T
 ): CSSProperties => {
     const config: IDesignConfig = useContext(DesignContext) || defaultConfig;

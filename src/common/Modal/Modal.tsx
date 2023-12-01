@@ -1,10 +1,10 @@
 import React, { FC, useEffect } from "react";
 import { IModalProps } from "./types";
-import { getStyleFromProps } from "../../styles";
+import { getPrimaryStyles } from "../../styles";
 import "./Modal.css";
 
 export const Modal: FC<IModalProps> = (props) => {
-    const customStyle = getStyleFromProps(props);
+    const customStyle = getPrimaryStyles(props);
 
     useEffect(() => {
         document.body.style.overflow = props.isOpen ? "hidden" : "visible";

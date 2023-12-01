@@ -1,10 +1,10 @@
 import React, { FC, MouseEventHandler } from "react";
-import { getStyleFromProps } from "../../styles";
+import { getPrimaryStyles } from "../../styles";
 import { IButtonProps, TType } from "./types";
 import "./Button.css";
 
 export const Button: FC<IButtonProps> = (props) => {
-    const customStyle = getStyleFromProps(props);
+    const customStyle = getPrimaryStyles(props);
 
     let type: TType = "button";
     if (props.reset) type = "reset";

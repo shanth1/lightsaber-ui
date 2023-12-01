@@ -1,9 +1,9 @@
 import React, { FC } from "react";
-import { getStyleFromProps } from "../../styles";
+import { getPrimaryStyles } from "../../styles";
 import { IBoxProps } from "./types";
 
 const Box: FC<IBoxProps> = (props) => {
-    const customStyle = getStyleFromProps(props);
+    const customStyle = getPrimaryStyles(props);
 
     return (
         <div className={props.className} style={customStyle}>
