@@ -6,8 +6,18 @@ import { getStyleObjFromCss } from "../utils/cssToObj";
 import { updateBorderRadiusFromRounded } from "./rounded";
 import { defaultConfig } from "../provider/data/defaultConfig";
 
-const isPropsStyled = <T>(props: T): boolean =>
-    Object.prototype.hasOwnProperty.call(props, "p") && true;
+const isPropsStyled = <T>(props: T): boolean => {
+    if (
+        Object.prototype.hasOwnProperty.call(props, "p") ||
+        Object.prototype.hasOwnProperty.call(props, "px") ||
+        Object.prototype.hasOwnProperty.call(props, "py") ||
+        Object.prototype.hasOwnProperty.call(props, "color") ||
+        Object.prototype.hasOwnProperty.call(props, "rounded")
+    ) {
+        return true;
+    }
+    return false;
+};
 
 export const getPrimaryStyles = <T extends IStyledProps>(
     props: T
