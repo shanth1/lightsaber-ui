@@ -6,7 +6,7 @@ import { getSecondaryStyles } from "./styles";
 export const Typography: FC<ITypographyProps> = (props) => {
     const style: CSSProperties = {
         ...getSecondaryStyles(props),
-        ...getPrimaryStyles(props)
+        ...getPrimaryStyles(props, false)
     };
 
     return (

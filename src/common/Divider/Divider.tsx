@@ -9,5 +9,5 @@ export const Divider: FC<IDividerProps> = (props) => {
         ...getPrimaryStyles(props, false)
     };
 
-    return <div style={style}></div>;
+    return <div className={props.className} style={style}></div>;
 };
