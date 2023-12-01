@@ -4,7 +4,6 @@ import { updatePadding } from "../../styles/padding";
 import { DesignContext, IDesignConfig } from "../../provider";
 import { defaultConfig } from "../../provider/data/defaultConfig";
 import "../../styles/border.css";
-import { getCustomClassName } from "../../styles/borderRadius";
 import { IStyledProps } from "../../types";
 
 interface IBoxProps extends IStyledProps {
@@ -15,11 +14,6 @@ interface IBoxProps extends IStyledProps {
 const Box: FC<IBoxProps> = (props) => {
     const config: IDesignConfig = useContext(DesignContext) || defaultConfig;
 
-    const customClassName = getCustomClassName(
-        config.borderRadius,
-        props.className
-    );
-
     const styleFromCss = getStyleObjFromCss(props.css);
     const customStyle: CSSProperties = { ...styleFromCss, ...props.style };
 
@@ -28,7 +22,7 @@ const Box: FC<IBoxProps> = (props) => {
     updatePadding(customStyle, props.p, props.px, props.py);
 
     return (
-        <div className={customClassName} style={customStyle}>
+        <div className={props.className} style={customStyle}>
             {props.children}
         </div>
     );

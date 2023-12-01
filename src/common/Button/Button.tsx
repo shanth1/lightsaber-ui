@@ -2,7 +2,6 @@ import React, { CSSProperties, FC, MouseEvent, useContext } from "react";
 import "./Button.css";
 import { DesignContext, IDesignConfig } from "../../provider";
 import { defaultConfig } from "../../provider/data/defaultConfig";
-import { getCustomClassName } from "../../styles/borderRadius";
 import { getStyleObjFromCss } from "../../utils/cssToObj";
 import { updatePadding } from "../../styles/padding";
 import { IStyledProps } from "../../types";
@@ -20,11 +19,6 @@ interface IButtonProps extends IStyledProps {
 
 export const Button: FC<IButtonProps> = (props) => {
     const config: IDesignConfig = useContext(DesignContext) || defaultConfig;
-
-    const customClassName = getCustomClassName(
-        config.borderRadius,
-        props.className
-    );
 
     const styleFromCss: CSSProperties = getStyleObjFromCss(props.css);
     const customStyle: CSSProperties = { ...styleFromCss, ...props.style };
@@ -45,7 +39,7 @@ export const Button: FC<IButtonProps> = (props) => {
             className={[
                 "button",
                 props.disabled && "button_disabled",
-                customClassName
+                props.className
             ].join(" ")}
             style={customStyle}
         >

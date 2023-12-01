@@ -6,4 +6,4 @@ export type TRounded =
     | "xl"
     | "2xl"
     | "3xl"
-    | " full";
+    | "full";

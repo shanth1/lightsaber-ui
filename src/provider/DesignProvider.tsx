@@ -13,10 +13,7 @@ export const DesignProvider: FC<IDesignProvider> = ({ children, config }) => {
     const mixedConfig: IDesignConfig = !!config
         ? {
               themes: { ...defaultConfig.themes },
-              borderRadius: config.borderRadius || defaultConfig.borderRadius,
-              fontFamily: config.fontFamily?.length
-                  ? config.fontFamily
-                  : defaultConfig.fontFamily
+              rounded: config.rounded || defaultConfig.rounded
           }
         : defaultConfig;
 
