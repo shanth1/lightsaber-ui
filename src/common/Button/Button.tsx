@@ -2,14 +2,15 @@ import React, { CSSProperties, FC, MouseEvent, useContext } from "react";
 import "./Button.css";
 import { DesignContext, IDesignConfig } from "../../provider";
 import { defaultConfig } from "../../provider/data/defaultConfig";
-import { IStyledPropsWithChildren } from "../../types";
 import { getCustomClassName } from "../../styles/borderRadius";
 import { getStyleObjFromCss } from "../../utils/cssToObj";
 import { updatePadding } from "../../styles/padding";
+import { IStyledProps } from "../../types";
 
 type TType = "button" | "submit" | "reset";
 
-interface IButton extends IStyledPropsWithChildren<string> {
+interface IButtonProps extends IStyledProps {
+    children: string;
     borderRadius?: number;
     disabled?: boolean;
     submit?: boolean;
@@ -17,7 +18,7 @@ interface IButton extends IStyledPropsWithChildren<string> {
     onClick?(event?: MouseEvent): void;
 }
 
-export const Button: FC<IButton> = (props) => {
+export const Button: FC<IButtonProps> = (props) => {
     const config: IDesignConfig = useContext(DesignContext) || defaultConfig;
 
     const customClassName = getCustomClassName(

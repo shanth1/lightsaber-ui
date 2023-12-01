@@ -2,9 +2,10 @@ import React, { CSSProperties, FC, useContext } from "react";
 import { DesignContext, IDesignConfig } from "../../provider";
 import { defaultConfig } from "../../provider/data/defaultConfig";
 import { getStyleObjFromCss } from "../../utils/cssToObj";
-import { IStyledPropsWithChildren } from "../../types";
+import { IProps } from "../../types";
 
-interface ITypography extends IStyledPropsWithChildren<string> {
+interface ITypographyProps extends IProps {
+    children: string;
     start?: boolean;
     left?: boolean;
     center?: boolean;
@@ -13,7 +14,7 @@ interface ITypography extends IStyledPropsWithChildren<string> {
     justify?: boolean;
 }
 
-export const Typography: FC<ITypography> = (props) => {
+export const Typography: FC<ITypographyProps> = (props) => {
     const config: IDesignConfig = useContext(DesignContext) || defaultConfig;
     const customClassName = props.className;
 

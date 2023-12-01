@@ -5,13 +5,14 @@ import { DesignContext, IDesignConfig } from "../../provider";
 import { defaultConfig } from "../../provider/data/defaultConfig";
 import "../../styles/border.css";
 import { getCustomClassName } from "../../styles/borderRadius";
-import { IStyledPropsWithChildren } from "../../types";
+import { IStyledProps } from "../../types";
 
-interface IBox extends IStyledPropsWithChildren<ReactNode> {
+interface IBoxProps extends IStyledProps {
+    children: ReactNode;
     borderRadius?: number;
 }
 
-const Box: FC<IBox> = (props) => {
+const Box: FC<IBoxProps> = (props) => {
     const config: IDesignConfig = useContext(DesignContext) || defaultConfig;
 
     const customClassName = getCustomClassName(

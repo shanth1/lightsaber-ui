@@ -6,9 +6,9 @@ import { defaultConfig } from "../../provider/data/defaultConfig";
 import "../../styles/border.css";
 import { getCustomClassName } from "../../styles/borderRadius";
 import "./Modal.css";
-import { IModal } from "./types";
+import { IModalProps } from "./types";
 
-export const Modal: FC<IModal> = ({
+export const Modal: FC<IModalProps> = ({
     children,
     color,
     borderRadius,

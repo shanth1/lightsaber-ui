@@ -1,9 +1,10 @@
 import { ReactNode } from "react";
-import { IStyledPropsWithChildren } from "../../../types";
+import { IStyledProps } from "../../../types";
 
 type CallbackFunction = () => void;
 
-export interface IModal extends IStyledPropsWithChildren<ReactNode | string> {
+export interface IModalProps extends IStyledProps {
+    children: ReactNode | string;
     borderRadius?: number;
     isOpen: boolean;
     onClose: CallbackFunction;

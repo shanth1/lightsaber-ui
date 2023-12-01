@@ -3,12 +3,12 @@ import { DesignContext, IDesignConfig } from "../../provider";
 import { defaultConfig } from "../../provider/data/defaultConfig";
 import { IStyledProps } from "../../types";
 
-interface IDivider extends IStyledProps {
+interface IDividerProps extends IStyledProps {
     thickness?: string;
     orientation?: "vertical" | "horizontal";
 }
 
-export const Divider: FC<IDivider> = (props) => {
+export const Divider: FC<IDividerProps> = (props) => {
     const config: IDesignConfig = useContext(DesignContext) || defaultConfig;
     const customStyle: CSSProperties = {
         backgroundColor: "black",
