@@ -1,3 +1,5 @@
+import { TRounded } from "../../types";
+
 interface IColors {
     primary: string;
     secondary?: string;
@@ -21,7 +23,5 @@ interface ITransition {
 
 export interface IDesignConfig {
     themes?: IThemes;
-    borderRadius?: "none" | "sm" | "md" | "lg" | "full";
-    fontFamily?: Array<string>;
-    transition?: ITransition;
+    rounded?: TRounded;
 }

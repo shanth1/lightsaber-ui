@@ -1,50 +1,27 @@
-import React, { CSSProperties, FC, useContext, useEffect } from "react";
-import { getStyleObjFromCss } from "../../utils/cssToObj";
-import { updatePadding } from "../../styles/padding";
-import { DesignContext, IDesignConfig } from "../../provider";
-import { defaultConfig } from "../../provider/data/defaultConfig";
-import "../../styles/border.css";
-import { getCustomClassName } from "../../styles/borderRadius";
+import React, { FC, useEffect } from "react";
+import { IModalProps } from "./types";
+import { getPrimaryStyles } from "../../styles";
 import "./Modal.css";
-import { IModal } from "./IModal";
 
-export const Modal: FC<IModal> = ({
-    children,
-    color,
-    borderRadius,
-    p,
-    px,
-    py,
-    className,
-    style,
-    css,
-    isOpen,
-    onClose,
-    bpColor, //? back plate color. not sure about the name yet
-}) => {
-    const config: IDesignConfig = useContext(DesignContext) || defaultConfig;
+export const Modal: FC<IModalProps> = (props) => {
+    const style = getPrimaryStyles(props);
 
-    const customClassName = getCustomClassName(config.borderRadius, className);
+    useEffect(() => {
+        document.body.style.overflow = props.isOpen ? "hidden" : "visible";
+    }, [props.isOpen]);
 
-    const styleFromCss = getStyleObjFromCss(css);
-    const customStyle: CSSProperties = { ...styleFromCss, ...style };
-
-    customStyle.backgroundColor = color || customStyle.backgroundColor;
-    customStyle.borderRadius = `${borderRadius}rem`;
-    updatePadding(customStyle, p, px, py);
-
-    useEffect(()=>{
-      document.body.style.overflow = isOpen ? "hidden" : "visible";
-    }, [isOpen])
-
-    return isOpen ? (
-        <div className="back-plate" style={bpColor ? {backgroundColor: bpColor} : {}} onClick={onClose}>
+    return props.isOpen ? (
+        <div
+            className="back-plate"
+            style={props.bpColor ? { backgroundColor: props.bpColor } : {}}
+            onClick={props.onClose}
+        >
             <div className="modal-wrapper">
                 <div
-                    className={"modal-window " + customClassName}
-                    style={customStyle}
+                    className={"modal-window " + props.className}
+                    style={style}
                 >
-                    {children}
+                    {props.children}
                 </div>
             </div>
         </div>

@@ -1,36 +1,16 @@
-import React, { CSSProperties, FC, useContext } from "react";
-import { DesignContext, IDesignConfig } from "../../provider";
-import { defaultConfig } from "../../provider/data/defaultConfig";
-import { getStyleObjFromCss } from "../../utils/cssToObj";
+import React, { CSSProperties, FC } from "react";
+import { getPrimaryStyles } from "../../styles";
+import { ITypographyProps } from "./types";
+import { getSecondaryStyles } from "./styles";
 
-interface ITypography {
-    children: string;
-    className?: string;
-    css?: string;
-    style?: CSSProperties;
-
-    start?: boolean;
-    left?: boolean;
-    center?: boolean;
-    end?: boolean;
-    right?: boolean;
-    justify?: boolean;
-}
-
-export const Typography: FC<ITypography> = (props) => {
-    const config: IDesignConfig = useContext(DesignContext) || defaultConfig;
-    const customClassName = props.className;
-
-    const styleFromCss = getStyleObjFromCss(props.css);
-    const customStyle: CSSProperties = { ...styleFromCss, ...props.style };
-
-    if (props.justify) customStyle.textAlign = "justify";
-    if (props.end || props.right) customStyle.textAlign = "right";
-    if (props.center) customStyle.textAlign = "center";
-    if (props.start || props.left) customStyle.textAlign = "left";
+export const Typography: FC<ITypographyProps> = (props) => {
+    const style: CSSProperties = {
+        ...getSecondaryStyles(props),
+        ...getPrimaryStyles(props, false)
+    };
 
     return (
-        <div className={customClassName} style={customStyle}>
+        <div className={props.className} style={style}>
             {props.children}
         </div>
     );
