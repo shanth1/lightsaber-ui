@@ -1,50 +1,27 @@
-import React, { CSSProperties, FC, useContext, useEffect } from "react";
-import { getStyleObjFromCss } from "../../utils/cssToObj";
-import { updatePadding } from "../../styles/padding";
-import { DesignContext, IDesignConfig } from "../../provider";
-import { defaultConfig } from "../../provider/data/defaultConfig";
-import "./Modal.css";
+import React, { FC, useEffect } from "react";
 import { IModalProps } from "./types";
+import { getStyleFromProps } from "../../styles";
+import "./Modal.css";
 
-export const Modal: FC<IModalProps> = ({
-    children,
-    color,
-    borderRadius,
-    p,
-    px,
-    py,
-    className,
-    style,
-    css,
-    isOpen,
-    onClose,
-    bpColor //? back plate color. not sure about the name yet
-}) => {
-    const config: IDesignConfig = useContext(DesignContext) || defaultConfig;
-
-    const styleFromCss = getStyleObjFromCss(css);
-    const customStyle: CSSProperties = { ...styleFromCss, ...style };
-
-    customStyle.backgroundColor = color || customStyle.backgroundColor;
-    customStyle.borderRadius = `${borderRadius}rem`;
-    updatePadding(customStyle, p, px, py);
+export const Modal: FC<IModalProps> = (props) => {
+    const customStyle = getStyleFromProps(props);
 
     useEffect(() => {
-        document.body.style.overflow = isOpen ? "hidden" : "visible";
-    }, [isOpen]);
+        document.body.style.overflow = props.isOpen ? "hidden" : "visible";
+    }, [props.isOpen]);
 
-    return isOpen ? (
+    return props.isOpen ? (
         <div
             className="back-plate"
-            style={bpColor ? { backgroundColor: bpColor } : {}}
-            onClick={onClose}
+            style={props.bpColor ? { backgroundColor: props.bpColor } : {}}
+            onClick={props.onClose}
         >
             <div className="modal-wrapper">
                 <div
-                    className={"modal-window " + className}
+                    className={"modal-window " + props.className}
                     style={customStyle}
                 >
-                    {children}
+                    {props.children}
                 </div>
             </div>
         </div>

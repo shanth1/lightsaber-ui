@@ -1,16 +1,12 @@
-import React, { CSSProperties, FC, MouseEvent, useContext } from "react";
-import "./Button.css";
-import { DesignContext, IDesignConfig } from "../../provider";
-import { defaultConfig } from "../../provider/data/defaultConfig";
-import { getStyleObjFromCss } from "../../utils/cssToObj";
-import { updatePadding } from "../../styles/padding";
+import React, { FC, MouseEvent } from "react";
 import { IStyledProps } from "../../types";
+import { getStyleFromProps } from "../../styles";
+import "./Button.css";
 
 type TType = "button" | "submit" | "reset";
 
 interface IButtonProps extends IStyledProps {
     children: string;
-    borderRadius?: number;
     disabled?: boolean;
     submit?: boolean;
     reset?: boolean;
@@ -18,14 +14,7 @@ interface IButtonProps extends IStyledProps {
 }
 
 export const Button: FC<IButtonProps> = (props) => {
-    const config: IDesignConfig = useContext(DesignContext) || defaultConfig;
-
-    const styleFromCss: CSSProperties = getStyleObjFromCss(props.css);
-    const customStyle: CSSProperties = { ...styleFromCss, ...props.style };
-
-    customStyle.backgroundColor = props.color || customStyle.backgroundColor;
-    customStyle.borderRadius = `${props.borderRadius}rem`;
-    updatePadding(customStyle, props.p, props.px, props.py);
+    const customStyle = getStyleFromProps(props);
 
     let type: TType = "button";
     if (props.reset) type = "reset";

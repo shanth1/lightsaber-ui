@@ -1,8 +1,6 @@
-import React, { CSSProperties, FC, useContext } from "react";
-import { DesignContext, IDesignConfig } from "../../provider";
-import { defaultConfig } from "../../provider/data/defaultConfig";
-import { getStyleObjFromCss } from "../../utils/cssToObj";
+import React, { CSSProperties, FC } from "react";
 import { IProps } from "../../types";
+import { getStyleFromProps } from "../../styles";
 
 interface ITypographyProps extends IProps {
     children: string;
@@ -15,19 +13,18 @@ interface ITypographyProps extends IProps {
 }
 
 export const Typography: FC<ITypographyProps> = (props) => {
-    const config: IDesignConfig = useContext(DesignContext) || defaultConfig;
-    const customClassName = props.className;
-
-    const styleFromCss = getStyleObjFromCss(props.css);
-    const customStyle: CSSProperties = { ...styleFromCss, ...props.style };
-
-    if (props.justify) customStyle.textAlign = "justify";
-    if (props.end || props.right) customStyle.textAlign = "right";
-    if (props.center) customStyle.textAlign = "center";
-    if (props.start || props.left) customStyle.textAlign = "left";
+    const secondaryStyles: CSSProperties = {};
+    if (props.justify) secondaryStyles.textAlign = "justify";
+    if (props.end || props.right) secondaryStyles.textAlign = "right";
+    if (props.center) secondaryStyles.textAlign = "center";
+    if (props.start || props.left) secondaryStyles.textAlign = "left";
+    const primaryStyles: CSSProperties = {
+        ...secondaryStyles,
+        ...getStyleFromProps(props)
+    };
 
     return (
-        <div className={customClassName} style={customStyle}>
+        <div className={props.className} style={primaryStyles}>
             {props.children}
         </div>
     );

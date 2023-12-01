@@ -1,23 +1,35 @@
-import { CSSProperties } from "react";
-import { IDesignConfig } from "../provider";
+import { CSSProperties, useContext } from "react";
+import { DesignContext, IDesignConfig } from "../provider";
 import { IStyledProps } from "../types";
 import { updatePadding } from "./padding";
 import { getStyleObjFromCss } from "../utils/cssToObj";
 import { updateBorderRadiusFromRounded } from "./rounded";
 import { defaultConfig } from "../provider/data/defaultConfig";
 
-export const getStyle = (props: IStyledProps): CSSProperties => {
-    const config: IDesignConfig = defaultConfig;
-    const style: CSSProperties = {};
+const isPropsStyled = <T>(props: T): boolean =>
+    Object.prototype.hasOwnProperty.call(props, "p") && true;
 
-    if (Object.prototype.hasOwnProperty.call(props, "p")) {
-        style.backgroundColor = props.color;
-        updateBorderRadiusFromRounded(style, props.rounded || config.rounded);
-        updatePadding(style, props.p, props.px, props.py);
+export const getStyleFromProps = <T extends IStyledProps>(
+    props: T
+): CSSProperties => {
+    const config: IDesignConfig = useContext(DesignContext) || defaultConfig;
+    const customStyle: CSSProperties = {};
+
+    if (isPropsStyled<T>(props)) {
+        customStyle.backgroundColor = props.color;
+        updateBorderRadiusFromRounded(
+            customStyle,
+            props.rounded || config.rounded
+        );
+        updatePadding(customStyle, props.p, props.px, props.py);
     }
 
     const styleFromCss = getStyleObjFromCss(props.css);
-    const priorityStyle: CSSProperties = { ...styleFromCss, ...props.style };
+    const priorityStyle: CSSProperties = {
+        ...customStyle,
+        ...styleFromCss,
+        ...props.style
+    };
 
     return priorityStyle;
 };
