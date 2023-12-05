@@ -1,13 +1,11 @@
 import { ReactNode } from "react";
-import { IStyledProps } from "../../../types";
 
 type CallbackFunction = () => void;
 
-export interface IModalProps extends IStyledProps {
+export interface IModalProps {
     children: ReactNode | string;
-    borderRadius?: number;
     isOpen: boolean;
     onClose: CallbackFunction;
-    bpColor?: string; //Back plate color
-    closeBtn?: ReactNode | string;
+    showCloseButton?: boolean;
+    color?: string;
 }

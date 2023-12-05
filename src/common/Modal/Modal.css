@@ -1,43 +1,49 @@
-.lui-modal-wrapper {
+.lui-modal {
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 1000;  /*? needs furhter audjustments  */
-}
-
-.lui-modal-content-wrapper{
-    position: relative;
-    display: block;
     height: 100vh;
     width: 100vw;
+    z-index: 1000;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
-.lui-modal-background-plate {
-    background: white;
+.lui-modal-content {
+    position: relative;
+    cursor: auto;
+}
+
+.lui-close-button {
     position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
+    top: 2px;
+    right: 2px;
+    width: 30px;
+    height: 30px;
     cursor: pointer;
 }
 
-.lui-modal-cotent{
+.lui-close-button::before,
+.lui-close-button::after {
+    content: "";
     position: absolute;
-    bottom: 50%;
+    top: 50%;
     left: 50%;
-    transform: translate(-50%, 50%);
+    width: 20px;
+    height: 2px;
+    background-color: #000;
+    transform-origin: 50% 50%;
 }
 
-.lui-modal-close-btn {
-    position: absolute;
-    top: 4rem;
-    right: 4rem;
+.lui-close-button::before {
+    transform: translate(-50%, -50%) rotate(45deg);
 }
 
-.lui-modal-close-btn:hover {
-    opacity: 0.5;
-    cursor: pointer;
+.lui-close-button::after {
+    transform: translate(-50%, -50%) rotate(-45deg);
 }
 
 @media screen and (max-width: 1536px) {
@@ -47,21 +53,19 @@
 @media screen and (max-width: 1024px) {
 }
 @media screen and (max-width: 768px) {
-    .lui-modal-cotent{
-        width: 100%;
-        max-width: 80%;
-        left: 0;
+    .lui-modal {
+        display: block;
+    }
+    .lui-modal-content {
+        position: absolute;
         bottom: 0;
-        transform: translate(0, 0);
-        background: white;
+        height: auto;
+        max-height: 80vh;
+        width: 100%;
     }
-    .lui-modal-close-btn {
+    .lui-close-button {
         display: none;
-    }
-    .lui-modal-background-plate {
-        background: hsla(0, 0%, 0%, 0.3);
     }
 }
 @media screen and (max-width: 640px) {
-
 }
