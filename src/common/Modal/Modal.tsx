@@ -6,22 +6,30 @@ import "./Modal.css";
 export const Modal: FC<IModalProps> = (props) => {
     const style = getPrimaryStyles(props);
 
+    const CloseBtn = props.closeBtn ? props.closeBtn : <div>X</div>; // For now 'X' is default close btn
+
     useEffect(() => {
         document.body.style.overflow = props.isOpen ? "hidden" : "visible";
     }, [props.isOpen]);
 
     return props.isOpen ? (
-        <div
-            className="back-plate"
-            style={props.bpColor ? { backgroundColor: props.bpColor } : {}}
-            onClick={props.onClose}
-        >
-            <div className="modal-wrapper">
+        <div className="lui-modal-wrapper">
+            <div className="lui-modal-content-wrapper">
                 <div
-                    className={"modal-window " + props.className}
+                    className="lui-modal-background-plate"
+                    style={
+                        props.bpColor ? { backgroundColor: props.bpColor } : {}
+                    }
+                    onClick={props.onClose}
+                />
+                <div
+                    className={"lui-modal-cotent " + props.className}
                     style={style}
                 >
                     {props.children}
+                </div>
+                <div onClick={props.onClose} className="lui-modal-close-btn">
+                    {CloseBtn}
                 </div>
             </div>
         </div>

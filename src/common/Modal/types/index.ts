@@ -8,5 +8,6 @@ export interface IModalProps extends IStyledProps {
     borderRadius?: number;
     isOpen: boolean;
     onClose: CallbackFunction;
-    bpColor: string; //Back plate color
+    bpColor?: string; //Back plate color
+    closeBtn?: ReactNode | string;
 }
