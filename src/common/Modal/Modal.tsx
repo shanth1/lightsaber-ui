@@ -1,35 +1,20 @@
-import React, { FC, useEffect } from "react";
-import { IModalProps } from "./types";
-import { getPrimaryStyles } from "../../styles";
-import "./Modal.css";
+import React from "react";
 
-export const Modal: FC<IModalProps> = (props) => {
-    const style = getPrimaryStyles(props);
-
-    const CloseBtn = props.closeBtn ? props.closeBtn : <div>×</div>; // For now 'X' is default close btn
-
-    useEffect(() => {
-        document.body.style.overflow = props.isOpen ? "hidden" : "visible";
-    }, [props.isOpen]);
-
-    return props.isOpen ? (
-        <div className="lui-modal-wrapper">
-            <div
-                className="lui-modal-background-plate"
-                style={props.bpColor ? { backgroundColor: props.bpColor } : {}}
-                onClick={props.onClose}
-            />
-            <div
-                className={"lui-modal-cotent " + props.className}
-                style={style}
-            >
-                {props.children}
-                <div onClick={props.onClose} className="lui-modal-close-btn">
-                    {CloseBtn}
-                </div>
-            </div>
-        </div>
-    ) : (
-        <></>
+function Modal() {
+    const mediaQuery = window.matchMedia(
+        "(min-width: 768px) and (orientation: landscape)"
     );
-};
+
+    const handleMediaChange = (event: MediaQueryListEvent | MediaQueryList) => {
+        if (event.matches) {
+        } else {
+        }
+    };
+
+    mediaQuery.addEventListener("change", handleMediaChange);
+
+    handleMediaChange(mediaQuery);
+    return <div>ModalCenter</div>;
+}
+
+export default Modal;

@@ -24,19 +24,7 @@
     position: relative;
     max-height: 70vh;
     max-width: 80vw;
-}
-
-.lui-modal-close-btn {
-    position: absolute;
-    top: -2rem;
-    right: -2rem;
-    font-size: xx-large;
-    line-height: 1ch;
-}
-
-.lui-modal-close-btn:hover {
-    opacity: 0.5;
-    cursor: pointer;
+    overflow-y: scroll;
 }
 
 @media screen and (min-width: 640px) {
