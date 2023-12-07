@@ -1,14 +1,4 @@
-import { CSSProperties, ReactNode } from "react";
+import { TRounded } from "./types";
+import { IProps, IStyledProps } from "./interfaces";
 
-export type TChildren = ReactNode | string;
-
-export interface IProps {
-    children: TChildren;
-    color?: string;
-    p?: number;
-    px?: number;
-    py?: number;
-    className?: string;
-    style?: CSSProperties;
-    css?: string;
-}
+export { TRounded, IProps, IStyledProps };

@@ -1,11 +1,28 @@
-import React, { FC, ReactNode, useContext } from "react";
+import React, { FC, MouseEventHandler } from "react";
+import { getPrimaryStyles } from "../../styles";
+import { IButtonProps, TType } from "./types";
 import "./Button.css";
-import { DesignContext, IDesignConfig } from "../../provider";
-import { defaultConfig } from "../../provider/data/defaultConfig";
-import { IProps } from "../../types";
 
-export const Button: FC<IProps> = ({ children, ...props }) => {
-    const config: IDesignConfig = useContext(DesignContext) || defaultConfig;
+export const Button: FC<IButtonProps> = (props) => {
+    const style = getPrimaryStyles(props);
 
-    return <button {...props}>{children}</button>;
+    let type: TType = "button";
+    if (props.reset) type = "reset";
+    if (props.submit) type = "submit";
+
+    return (
+        <button
+            type={type}
+            disabled={props.disabled}
+            onClick={props.onClick}
+            className={[
+                "button",
+                props.disabled && "button_disabled",
+                props.className
+            ].join(" ")}
+            style={style}
+        >
+            {props.children}
+        </button>
+    );
 };
